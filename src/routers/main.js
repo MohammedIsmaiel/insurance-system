@@ -10,14 +10,11 @@ router.get("/", (req, res) => {
 //list all companies
 router.get("/get-all-companies", (req, res) => {
     try {
-        con.connect(function (err) {
+        //TODO #1 insert sql code here @mohammedgamal23
+        var sql = "";
+        con.query(sql, function (err, result) {
             if (err) throw err;
-            //TODO #1 insert sql code here
-            var sql = "";
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log(result);
-            });
+            console.log(result);
         });
         res.json({
             allCompanies
@@ -33,14 +30,11 @@ router.get("/get-all-companies", (req, res) => {
 router.post("/add-new-company", (req, res) => {
     try {
         let newCompany = req.body
-        con.connect(function (err) {
+        //TODO #1 insert sql code here @mohammedgamal23
+        var sql = "";
+        con.query(sql, function (err, result) {
             if (err) throw err;
-            //TODO #1 insert sql code here
-            var sql = "";
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log(result);
-            });
+            console.log(result);
         });
         res.json({
             newCompany
@@ -56,14 +50,11 @@ router.post("/add-new-company", (req, res) => {
 router.post("/add-new-Customer", (req, res) => {
     try {
         let newCustomer = req.body
-        con.connect(function (err) {
+        //TODO #1 insert sql code here @mohammedgamal23
+        var sql = "";
+        con.query(sql, function (err, result) {
             if (err) throw err;
-            //TODO #1 insert sql code here
-            var sql = "";
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log(result);
-            });
+            console.log(result);
         });
         res.json({
             newCustomer
@@ -79,14 +70,11 @@ router.post("/add-new-Customer", (req, res) => {
 //search for a customer
 router.get("/get-Customer", (req, res) => {
     try {
-        con.connect(function (err) {
+        //TODO #1 insert sql code here @mohammedgamal23
+        var sql = "";
+        con.query(sql, function (err, result) {
             if (err) throw err;
-            //TODO #1 insert sql code here
-            var sql = "";
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log(result);
-            });
+            console.log(result);
         });
         res.json({
             customer
@@ -102,14 +90,11 @@ router.get("/get-Customer", (req, res) => {
 router.post("/add-new-program", (req, res) => {
     try {
         let newProgram = req.body
-        con.connect(function (err) {
+        //TODO #1 insert sql code here @mohammedgamal23
+        var sql = "";
+        con.query(sql, function (err, result) {
             if (err) throw err;
-            //TODO #1 insert sql code here
-            var sql = "";
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log(result);
-            });
+            console.log(result);
         });
         res.json({
             newProgram
