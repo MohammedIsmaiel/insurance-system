@@ -15,6 +15,10 @@ const express = require("express"),
     path = require('path'),
     hbs = require('hbs'),
     mainRouter = require('./routers/main'),
+    customer = require('./routers/customer'),
+    program = require('./routers/program'),
+    company = require('./routers/company'),
+    service = require('./routers/service'),
     port = process.env.PORT || 5000;
 const app = express();
 app.listen(port)
@@ -28,6 +32,10 @@ app.use(express.static(path.join(__dirname, '../assets')))
 
 
 app.use(mainRouter)
+app.use('/company', company)
+app.use('/customer', customer)
+app.use('/program', program)
+app.use('/service', service)
 
 
 
