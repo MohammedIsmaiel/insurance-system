@@ -26,8 +26,8 @@ router.post("/add-new-Customer", (req, res) => {
 });
 
 
-//search for a customer
-router.get("/get-Customer", (req, res) => {
+//search for a customer by id 
+router.get("/get-Customer/:id", (req, res) => {
     try {
         //TODO #1 insert sql code here @mohammedgamal23
         var sql = "";
