@@ -46,4 +46,24 @@ router.get("/get-Customer/:id", (req, res) => {
 });
 
 
+//get all customers
+router.get("/get-Customers", (req, res) => {
+    try {
+        //TODO #1 insert sql code here @mohammedgamal23
+        var sql = "CALL `get-all-customers`();";
+        db.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+        });
+        res.json({
+            customers: result[0]
+        })
+    } catch (err) {
+        return res.status(400).json({
+            message: err.message
+        });
+    }
+});
+
+
 module.exports = router
