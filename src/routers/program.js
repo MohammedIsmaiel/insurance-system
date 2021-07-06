@@ -9,14 +9,19 @@ router.post("/add-program", (req, res) => {
     try {
         let newProgram = req.body
         //TODO #1 insert sql code here @mohammedgamal23
-        var sql = "";
-        db.query(sql, function (err, result) {
+        var sql = "CALL `program_insertion`(?,?,?,@p3);";
+        db.query(sql, [
+            newProgram.program_name,
+            newProgram.max_balance,
+            newProgram.company_id
+        ], function (err, result) {
             if (err) throw err;
             console.log(result);
+            res.json({
+                newProgram: result[0]
+            })
         });
-        res.json({
-            newProgram
-        })
+
     } catch (err) {
         return res.status(400).json({
             message: err.message
@@ -32,10 +37,11 @@ router.get("/get-programs", (req, res) => {
         db.query(sql, function (err, result) {
             if (err) throw err;
             console.log(result);
+            res.json({
+                allPrograms: result[0]
+            })
         });
-        res.json({
-            allPrograms: result[0]
-        })
+
     } catch (err) {
         return res.status(400).json({
             message: err.message
@@ -48,14 +54,15 @@ router.get("/get-program/:id", (req, res) => {
     try {
         let id = req.params.id
         //TODO #1 insert sql code here @mohammedgamal23
-        var sql = "";
-        db.query(sql, function (err, result) {
+        var sql = "CALL `get-program-by-id`(?);";
+        db.query(sql, [id], function (err, result) {
             if (err) throw err;
             console.log(result);
+            res.json({
+                program: result[0]
+            })
         });
-        res.json({
-            program
-        })
+
     } catch (err) {
         return res.status(400).json({
             message: err.message

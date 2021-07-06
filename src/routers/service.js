@@ -9,14 +9,18 @@ router.post("/add-service", (req, res) => {
     try {
         let newService = req.body
         //TODO #1 insert sql code here @mohammedgamal23
-        var sql = "";
-        db.query(sql, function (err, result) {
+        var sql = "call `service_insertion`(?,?,?,@p3)";
+        db.query(sql, [
+            newService.service_name,
+            newService.service_category,
+            newService.service_discription
+        ], function (err, result) {
             if (err) throw err;
             console.log(result);
+            res.json({
+                newService: result[0]
+            })
         });
-        res.json({
-            newService
-        })
     } catch (err) {
         return res.status(400).json({
             message: err.message
@@ -32,10 +36,10 @@ router.get("/get-services", (req, res) => {
         db.query(sql, function (err, result) {
             if (err) throw err;
             console.log(result);
+            res.json({
+                allServices: result[0]
+            })
         });
-        res.json({
-            allServices: result[0]
-        })
     } catch (err) {
         return res.status(400).json({
             message: err.message
@@ -48,14 +52,14 @@ router.get("/get-service/:id", (req, res) => {
     try {
         let id = req.params.id
         //TODO #1 insert sql code here @mohammedgamal23
-        var sql = "";
-        db.query(sql, function (err, result) {
+        var sql = "CALL `get-service-by-id`(?);";
+        db.query(sql, [id], function (err, result) {
             if (err) throw err;
             console.log(result);
+            res.json({
+                service: result[0]
+            })
         });
-        res.json({
-            service
-        })
     } catch (err) {
         return res.status(400).json({
             message: err.message
