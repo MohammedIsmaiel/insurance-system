@@ -2,12 +2,12 @@
 
 const { db } = require('./db/dbconnect');
 // Connect
-// db.connect((err) => {
-//     if (err) {
-//         throw err;
-//     }
-//     console.log('MySql Connected...');
-// });
+db.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('MySql Connected...');
+});
 
 
 const cookieParser = require('cookie-parser');

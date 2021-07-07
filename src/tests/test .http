@@ -13,9 +13,8 @@ Content-Type: application/json
 {
     "name":"atia",
     "password":"atia222",
-    "email":"atia@dfsdf.dfd",
+    "email":"atiaa@dfsdf.dfd",
     "adress":"hehia"
-
 }
 ###
 POST https://insurance-sys.herokuapp.com/company/add-company HTTP/1.1
