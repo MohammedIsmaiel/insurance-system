@@ -19,7 +19,7 @@ router.post("/add-service", (req, res) => {
             if (err) throw err;
             console.log(result);
             res.json({
-                newService: result[0]
+                newService
             })
         });
     } catch (err) {

@@ -18,7 +18,7 @@ router.post("/add-program", (req, res) => {
             if (err) throw err;
             console.log(result);
             res.json({
-                newProgram: result[0]
+                newProgram
             })
         });
 

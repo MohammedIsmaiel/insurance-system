@@ -36,7 +36,7 @@ router.post("/add-company", (req, res) => {
             if (err) throw err;
             console.log(result);
             res.json({
-                newCompany: result[0]
+                newCompany
             })
         });
 

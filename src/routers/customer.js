@@ -21,7 +21,7 @@ router.post("/add-customer", (req, res) => {
                 if (err) throw err;
                 console.log(result);
                 res.json({
-                    newCustomer: result[0]
+                    newCustomer
                 })
             });
 
