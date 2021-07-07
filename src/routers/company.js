@@ -31,15 +31,19 @@ router.post("/add-company", (req, res) => {
         let newCompany = req.body
         let getId
         //TODO #1 insert sql code here @mohammedgamal23
-        var sql = `CALL Company_Insertion( ?, ?, ?,?,@id); `
+        var sql = `CALL Company_Insertion( ?, ?, ?,?,@id); SELECT LAST_INSERT_ID(); `
         db.query(sql, [newCompany.name, newCompany.email, newCompany.password, newCompany.adress], function (err, result) {
             if (err) throw err;
-            console.log(result);
-            res.json({
-                newCompany
-            })
-        });
+            db.query("SELECT LAST_INSERT_ID();", function (err, result2) {
+                if (err) throw err;
+                console.log(result);
+                res.json({
+                    newCompany,
+                    id: result2[0]
 
+                })
+            });
+        });
     } catch (err) {
         return res.status(400).json({
             message: err.message

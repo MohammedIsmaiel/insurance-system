@@ -13,7 +13,7 @@ Content-Type: application/json
 {
     "name":"atia",
     "password":"atia222",
-    "email":"atiaa@dfsdf.dfd",
+    "email":"adfaaa@dfsdf.dfd",
     "adress":"hehia"
 }
 ###
@@ -22,8 +22,8 @@ Content-Type: application/json
 
 {
     "name":"atia",
-    "password":"atia222",
-    "email":"atiaa@dfsdf.dfd",
+    "password":"atiaa222",
+    "email":"atiasaa@dfsdf.dfd",
     "adress":"hehia"
 
 }
