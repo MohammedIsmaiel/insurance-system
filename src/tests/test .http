@@ -17,7 +17,19 @@ Content-Type: application/json
     "adress":"hehia"
 
 }
+###
+POST https://insurance-sys.herokuapp.com/company/add-company HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"atia",
+    "password":"atia222",
+    "email":"atiaa@dfsdf.dfd",
+    "adress":"hehia"
+
+}
 ####
+
 GET http://localhost:5000/company/get-company/13 HTTP/1.1
 
 ###

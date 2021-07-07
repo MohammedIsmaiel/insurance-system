@@ -4,7 +4,7 @@ const { db } = require('.././db/dbconnect');
 
 
 
-//list all companies
+//list all companies after       /company
 router.get("/get-companies", (req, res) => {
     try {
         //TODO #1 insert sql code here @mohammedgamal23
@@ -27,6 +27,7 @@ router.get("/get-companies", (req, res) => {
 //add new company
 router.post("/add-company", (req, res) => {
     try {
+
         let newCompany = req.body
         let getId
         //TODO #1 insert sql code here @mohammedgamal23
