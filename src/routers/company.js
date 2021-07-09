@@ -10,11 +10,17 @@ router.get("/get-companies", (req, res) => {
         //TODO #1 insert sql code here @mohammedgamal23
         var sql = "CALL `get-all-companies`();";
         db.query(sql, function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            res.json({
-                allCompanies: result[0]
-            })
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    allCompanies: result[0]
+                })
+            }
+
         });
 
     } catch (err) {
@@ -33,16 +39,22 @@ router.post("/add-company", (req, res) => {
         //TODO #1 insert sql code here @mohammedgamal23
         var sql = `CALL Company_Insertion( ?, ?, ?,?,@id); SELECT LAST_INSERT_ID(); `
         db.query(sql, [newCompany.name, newCompany.email, newCompany.password, newCompany.adress], function (err, result) {
-            if (err) throw err;
-            db.query("SELECT LAST_INSERT_ID();", function (err, result2) {
-                if (err) throw err;
-                console.log(result);
-                res.json({
-                    newCompany,
-                    id: result2[0]
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                db.query("SELECT LAST_INSERT_ID();", function (err, result2) {
+                    if (err) throw err;
+                    console.log(result);
+                    res.json({
+                        newCompany,
+                        id: result2[0]
+                    })
+                });
+            }
 
-                })
-            });
+
         });
     } catch (err) {
         return res.status(400).json({
@@ -58,11 +70,19 @@ router.get("/get-company/:id", (req, res) => {
         //TODO #1 insert sql code here @mohammedgamal23
         var sql = "CALL `get-company-by-id`(?);";
         db.query(sql, [id], function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            res.json({
-                company: result[0]
-            })
+
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    company: result[0]
+                })
+
+            }
+
         });
     } catch (err) {
         return res.status(400).json({

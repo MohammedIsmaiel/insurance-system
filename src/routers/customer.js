@@ -9,7 +9,7 @@ const { db } = require('.././db/dbconnect');
 router.post("/add-customer", (req, res) => {
     try {
         let newCustomer = req.body
-        var sql = `CALL Customer_Insertion( ?, ?, ?,?,?,?,?); `
+        var sql = `CALL Customer_Insertion( ?, ?, ?,?,?,?,?,?); `
         db.query(sql, [
             newCustomer.firstName,
             newCustomer.lastName,
@@ -17,13 +17,22 @@ router.post("/add-customer", (req, res) => {
             newCustomer.phone,
             newCustomer.email,
             newCustomer.current_balance,
-            newCustomer.ProgramID], function (err, result) {
-                if (err) throw err;
+            newCustomer.ProgramID,
+            newCustomer.isActive
+        ], function (err, result) {
+
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
                 console.log(result);
                 res.json({
                     newCustomer
                 })
-            });
+            }
+
+        });
 
     } catch (err) {
         return res.status(400).json({
@@ -39,11 +48,19 @@ router.get("/get-Customer/:id", (req, res) => {
         let id = req.params.id
         var sql = "CALL `get-customer-by-id`(?);";
         db.query(sql, [id], function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            res.json({
-                customer: result[0]
-            })
+
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    customer: result[0]
+                })
+
+            }
+
         });
 
     } catch (err) {
@@ -59,12 +76,19 @@ router.get("/get-Customers", (req, res) => {
     try {
         var sql = "CALL `get-all-customers`();";
         db.query(sql, function (err, result) {
-            if (err) throw err;
-            console.log(result);
+
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    customers: result[0]
+                })
+            }
+
         });
-        res.json({
-            customers: result[0]
-        })
     } catch (err) {
         return res.status(400).json({
             message: err.message

@@ -16,11 +16,18 @@ router.post("/add-service", (req, res) => {
             newService.service_category,
             newService.service_discription
         ], function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            res.json({
-                newService
-            })
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    newService
+                })
+
+
+            }
         });
     } catch (err) {
         return res.status(400).json({
@@ -35,11 +42,17 @@ router.get("/get-services", (req, res) => {
         //TODO #1 insert sql code here @mohammedgamal23
         var sql = "CALL `get-all-services`();";
         db.query(sql, function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            res.json({
-                allServices: result[0]
-            })
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    allServices: result[0]
+                })
+
+            }
         });
     } catch (err) {
         return res.status(400).json({
@@ -55,11 +68,18 @@ router.get("/get-service/:id", (req, res) => {
         //TODO #1 insert sql code here @mohammedgamal23
         var sql = "CALL `get-service-by-id`(?);";
         db.query(sql, [id], function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            res.json({
-                service: result[0]
-            })
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+
+                console.log(result);
+                res.json({
+                    service: result[0]
+                })
+
+            }
         });
     } catch (err) {
         return res.status(400).json({

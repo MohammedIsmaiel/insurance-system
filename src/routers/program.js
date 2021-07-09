@@ -15,11 +15,18 @@ router.post("/add-program", (req, res) => {
             newProgram.max_balance,
             newProgram.company_id
         ], function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            res.json({
-                newProgram
-            })
+
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    newProgram
+                })
+            }
+
         });
 
     } catch (err) {
@@ -35,11 +42,20 @@ router.get("/get-programs", (req, res) => {
         //TODO #1 insert sql code here @mohammedgamal23
         var sql = "CALL `get-all-programs`();";
         db.query(sql, function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            res.json({
-                allPrograms: result[0]
-            })
+
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    allPrograms: result[0]
+                })
+
+            }
+
+
         });
 
     } catch (err) {
@@ -56,11 +72,19 @@ router.get("/get-program/:id", (req, res) => {
         //TODO #1 insert sql code here @mohammedgamal23
         var sql = "CALL `get-program-by-id`(?);";
         db.query(sql, [id], function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            res.json({
-                program: result[0]
-            })
+
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    program: result[0]
+                })
+
+            }
+
         });
 
     } catch (err) {
