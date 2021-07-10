@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, '../assets')))
 
 
-app.use(mainRouter)
+app.use('/', mainRouter)
 app.use('/company', company)
 app.use('/customer', customer)
 app.use('/program', program)

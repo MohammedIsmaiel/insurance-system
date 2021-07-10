@@ -94,4 +94,36 @@ router.get("/get-program/:id", (req, res) => {
     }
 });
 
+
+//assign service to program
+router.post("/assign-service", (req, res) => {
+    try {
+        let service = req.body
+        var sql = "call db.program_has_services_insertion(?,?,?,?);";
+        db.query(sql, [
+            service.serviceID,
+            service.programID,
+            service.discount,
+            service.max_discount_value
+        ], function (err, result) {
+
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    service
+                })
+            }
+
+        });
+
+    } catch (err) {
+        return res.status(400).json({
+            message: err.message
+        });
+    }
+});
 module.exports = router

@@ -14,12 +14,10 @@ router.get("/clinic/:id", (req, res) => {
                     error: err.message
                 });
             } else {
-
                 console.log(result);
                 res.json({
                     clinic: result[0]
                 })
-
             }
         });
     } catch (err) {
