@@ -37,7 +37,7 @@ router.post("/add-company", (req, res) => {
         let newCompany = req.body
         let getId
         //TODO #1 insert sql code here @mohammedgamal23
-        var sql = `CALL Company_Insertion( ?, ?, ?,?,@id); SELECT LAST_INSERT_ID(); `
+        var sql = 'CALL `Company_Insertion`( ?, ?, ?,?,@id);'
         db.query(sql, [newCompany.name, newCompany.email, newCompany.password, newCompany.adress], function (err, result) {
             if (err) {
                 return res.json({
