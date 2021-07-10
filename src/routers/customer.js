@@ -101,7 +101,37 @@ router.get("/customer-program/:id", (req, res) => {
     try {
         let id = req.params.id
         //TODO #1 insert sql code here @mohammedgamal23
-        var sql = "call get-customer-by-id-join-program(?);";
+        var sql = "call `get-customer-by-id-join-program`(?);";
+        db.query(sql, [
+            id
+        ], function (err, result) {
+
+            if (err) {
+                return res.json({
+                    error: err.message
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    customer: result[0]
+                })
+            }
+
+        });
+
+    } catch (err) {
+        return res.status(400).json({
+            message: err.message
+        });
+    }
+});
+
+//get customer service
+router.get("/customer-service/:id", (req, res) => {
+    try {
+        let id = req.params.id
+        //TODO #1 insert sql code here @mohammedgamal23
+        var sql = "call `get-customer-services`(?);";
         db.query(sql, [
             id
         ], function (err, result) {
