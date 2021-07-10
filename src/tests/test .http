@@ -17,7 +17,7 @@ Content-Type: application/json
     "adress":"hehia"
 }
 ###
-POST https://insurance-sys.herokuapp.com/company/add-company HTTP/1.1
+POST https://insurance-sys.herokuapp.com/program/assign-service HTTP/1.1
 Content-Type: application/json
 
 {
